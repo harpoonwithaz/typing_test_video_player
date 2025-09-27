@@ -40,6 +40,9 @@ function openPopup() {
     const quote = getRandomQuote(quotes);
     typingText.textContent = "Finish typing: " + quote;
     
+    feedbackElement.innerText = "Start typing...";
+    feedbackElement.style.color = "black";
+
     // Typing check
     input.addEventListener("input", () => {
         // Start timer on first keystroke
@@ -60,14 +63,15 @@ function openPopup() {
             videoElement.play()
 
         } else {
+            feedbackElement.innerText = "Incorrect";
+            feedbackElement.style.color = "red";
             if (isTestRunning) {
                 const elapsed = new Date() - startTime;
                 const wpm = calculateWPM(input.value, elapsed);
                 wpmElement.style.color = "blue";
                 wpmElement.innerText = `WPM: ${wpm}`;
             } else {
-                wpmElement.innerText = "Start typing...";
-                wpmElement.style.color = "black";
+                
             }
         }
     });
