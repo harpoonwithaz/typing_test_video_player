@@ -15,17 +15,20 @@
         </video>
     </span>
     <span class="typing_test">
-        <button id="myBtn">Open Modal</button>
-        <div id="myModal" class="modal">
+        <button id="openModalButton">Open Modal</button>
+        <div id="typingTestModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h1>OH NO! John Pork needs your help!</h1>
-                <p>To resume the video and save John pork, complete the typing test</p>
-                <input type="text" id="userInput">
+                <h2>EMERGENCY TYPING TEST</h2>
+                <span>In order to resume the video, you must complete the typing test with 100% accuracy</span>
+                <p id="typingText">The quick brown fox jumps over the lazy dog.</p>
+                <input type="text" id="typing-input" placeholder="Type here..." />
+                <div id="WPM"></div>
+                <div id="feedback"></div>
             </div>
         </div>
     </span>
-    <script src="main.js"></script>
+    <script src="test_script.js"></script>
 </body>
 
 </html>
