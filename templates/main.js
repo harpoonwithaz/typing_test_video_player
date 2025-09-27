@@ -6,7 +6,7 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var closeIcon = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
@@ -14,7 +14,7 @@ modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+closeIcon.onclick = function() {
 modal.style.display = "none";
 }
 
@@ -25,11 +25,7 @@ if (event.target == modal) {
 }
 }
 
-
-
-
 const videoEl = document.getElementById("video");
-const testEl = document.getElementById("test-container");
 
 setTimeout(() => {
   videoEl.play();
@@ -84,8 +80,11 @@ function typingTest() {
     }
 }
 
-// Run function
-typingTest();
+const openModalBtn = document.getElementById("myBtn");
+
+if (openModalBtn) {
+  openModalBtn.addEventListener("click", typingTest);
+}
 
 // Get the modal
 var modal = document.getElementById("myModal");
