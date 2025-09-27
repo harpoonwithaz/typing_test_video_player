@@ -2,7 +2,8 @@ const modal = document.getElementById("typingTestModal");
 const openBtn = document.getElementById("openModalButton");
 const closeBtn = document.querySelector(".close");
 const input = document.getElementById("typing-input");
-const feedback = document.getElementById("feedback");
+const wpmElement = document.getElementById("WPM");
+const feedbackElement = document.getElementById("feedback")
 const typingText = document.getElementById("typingText");
 
 const videoElement = document.getElementById("video");
@@ -24,6 +25,12 @@ function getRandomQuote(arr) {
   return randomItem;
 }
 
+function calculateWPM(text, timeElapsed){
+    const words = text.trim().split(/\s+/).length;
+    const minutes = timeElapsed / 60000; // Converts from ms to minutes
+    return Math.round(words/minutes)
+}
+
 // When the modal opens
 function openPopup() {
     // Make the modal appear
@@ -35,26 +42,45 @@ function openPopup() {
     
     // Typing check
     input.addEventListener("input", () => {
+        // Start timer on first keystroke
+        if (!isTestRunning && input.value.length > 0) {
+            startTime = new Date();
+            isTestRunning = true; // Starts WPM test
+        }
+
         if (input.value === quote) {
-        feedback.style.color = "green";
-        feedback.innerText = "Correct!";
-        
-        // Once user finishes, it automatically closes
-        modal.style.display = "none";
-        videoElement.play()
+            const elapsed = new Date() - startTime; // Calculates start time
+            const wpm = calculateWPM(quote, elapsed) // Calculates WPM based on start time and amount of words
+
+            wpmElement.style.color = "green";
+            wpmElement.innerText = "Correct! Your WPM was ${wpm}";
+            
+            // Once user finishes, it automatically closes
+            modal.style.display = "none";
+            videoElement.play()
 
         } else {
-        feedback.style.color = "red";
-        feedback.innerText = "Keep typing...";
+            if (isTestRunning) {
+                const elapsed = new Date() - startTime;
+                const wpm = calculateWPM(input.value, elapsed);
+                wpmElement.style.color = "blue";
+                wpmElement.innerText = `WPM: ${wpm}`;
+            } else {
+                wpmElement.innerText = "Start typing...";
+                wpmElement.style.color = "black";
+            }
         }
     });
     input.value = "";
-    feedback.innerText = "";
+    wpmElement.innerText = "";
 }
 
 
 // Initiates the countdown
 let countdownTimer;
+
+let startTime = null;
+let isTestRunning = false; // Variable for storing of the WPM test is running
 
 // 1. Listen for video play
 videoElement.addEventListener("play", () => {
