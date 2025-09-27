@@ -1,4 +1,29 @@
-# Typing test Portion
+# importing random
+#import random
+
+#Within a function
+#def typing_test()
+#Create a list of phrases that are typed
+#list = ["The quick brown fox jumps over the lazy dog.",
+#"Hackathons are fun!",
+#"Typing tests mash well with video.",
+#
+# "Keep going or the video stops!"]
+
+#Allow for the random selection of the text in a list
+
+
+#Display the given text
+#test = random.choice(list)
+
+#Gather input from the user
+#target_words = input()
+
+#Create a boolean operator for the text
+#is_correct = (user_input.strip() == target_text)
+
+#Conditionals for success or failure (idk what to do for this ngl)
+
 import time
 import random
 
@@ -34,7 +59,8 @@ def typing_test():
     target_words = target.split()
     typed_words = typed.split()
     
-    correct_chars = sum(1 for i, c in enumerate(typed) if i < len(target) and c == target[i])
+    correct_chars = sum(1 for i, c in enume
+    rate(typed) if i < len(target) and c == target[i])
     accuracy = (correct_chars / len(target)) * 100 if len(target) > 0 else 0
     
     wpm = (len(typed_words) / (elapsed_time / 60)) if elapsed_time > 0 else 0  # words per minute
