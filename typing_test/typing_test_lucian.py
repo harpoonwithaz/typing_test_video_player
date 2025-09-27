@@ -6,10 +6,16 @@ import time
 import random
 #Within a function
 def typingTest():
-    import time
-    import random
 #Create a list of phrases that are typed
-    quotes = ["What do you know about gooning", "Kung fu panda","Yung money clan"]
+    quotes = [
+        "Who-a eata my spaghett." , 
+        "JOHN PORK is in the house today!", 
+        "Capuccina ballerina, tung tung tung sahur.", 
+        "Skibidi bum bum bum yes yes.", 
+        "My favourite Roblox game is grow a garden.",
+        "Bonjour mon ami, tu es magnifique."
+    ]
+
 #Allow for the random selection of the text in a list (Can use for loop or random choice)
     startTime = time.time()
     while True: 
