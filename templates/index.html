@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -13,7 +14,14 @@
         </video>
     </span>
     <span class="typing_test">
-
+        <button id="myBtn">Open Modal</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+                <input type="text" id="userInput">
+            </div>
+        </div>
     </span>
     <script src="main.js"></script>
 </body>
