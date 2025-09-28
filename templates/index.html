@@ -8,27 +8,38 @@
 </head>
 <body>
     <h1>Welcome to our awesome video player</h1>
+    <p class="introduction">Hello everybody, welcome to our dynamic video player. Our video player entertains you, and simulataniously makes you a better typer</p>
+      <h2>Select a Video to Play</h2>
+        
+        <!-- Dropdown with preset videos -->
+        <select id="videoSelector">
+            <option value="">-- Choose a video --</option>
+            <option value="https://www.w3schools.com/html/mov_bbb.mp4">Big Buck Bunny</option>
+            <option value="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4">Google AD</option>
+            <option value="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4">Blender Movie</option>
+        </select>
+
+
     <span class="video_player">
-        <video id='video' width="320" height="240" controls>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        <video id='video' width="640" height="480" controls>
+        <source id="videoSource" src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
         Your browser does not support the video tag.
         </video>
     </span>
     <span class="typing_test">
-        <button id="openModalButton">Open Modal</button>
         <div id="typingTestModal" class="modal">
-            <div class="modal-content">
+            <div id="modal-thing" class="modal-content">
                 <span class="close">&times;</span>
-                <h2>EMERGENCY TYPING TEST</h2>
+                <h2 id="modalHeader">EMERGENCY TYPING TEST</h2>
                 <span>In order to resume the video, you must complete the typing test with 100% accuracy</span>
-                <p id="typingText">The quick brown fox jumps over the lazy dog.</p>
+                <p id="typingText"></p>
+                <div id="feedback"></div>
                 <input type="text" id="typing-input" placeholder="Type here..." />
                 <div id="WPM"></div>
-                <div id="feedback"></div>
             </div>
         </div>
     </span>
-    <script src="test_script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

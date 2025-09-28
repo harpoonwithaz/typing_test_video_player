@@ -18,6 +18,14 @@ body {
   text-align: center;
 }
 
+.blurred-container {
+    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+    padding: 20px;
+    color: white;
+}
+
 /* ========== TEXT STYLING ========== */
 h1 {
   margin-bottom: 10px;
@@ -26,6 +34,15 @@ h1 {
 h1, p, button, input {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 
                'Trebuchet MS', sans-serif, Helvetica, sans-serif;
+}
+
+h2 {
+    color:#ff4b2b;
+}
+
+.introduction {
+    font-size: 25px;
+    color: rgb(58, 58, 58)
 }
 
 /* ========== VIDEO PLAYER ========== */
@@ -129,3 +146,17 @@ h1:active {
 .close:focus,
 .modal-content {
   animation: vibrate 0.3s linear infinite;}
+
+.superShake {
+  animation: vibrate 0.3s linear infinite;}
+
+.denyAnimation {
+    animation: shake 0.5s ease-in-out;
+    border-color: red; /* Optional: change border color to red */
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}

@@ -5,17 +5,21 @@ const input = document.getElementById("typing-input");
 const wpmElement = document.getElementById("WPM");
 const feedbackElement = document.getElementById("feedback")
 const typingText = document.getElementById("typingText");
+const popupHeader = document.getElementById("modalHeader");
+const modalElement = document.getElementById("modal-thing")
+const selectorElement = document.getElementById("videoSelector")
+let videoSource = document.getElementById("videoSource")
 
 const videoElement = document.getElementById("video");
 
 // List of random quotes for user to type
 const quotes = [
-    "Who-a eata my spaghett.",
-    "JOHN PORK is in the house today!",
-    "Capuccina ballerina, tung tung tung sahur.",
-    "Skibidi bum bum bum yes yes.",
-    "My favourite Roblox game is grow a garden.",
-    "Bonjour mon ami, tu es magnifique."
+    "Who-a eata my spaghett",
+    "JOHN PORK is in the house today",
+    "Capuccina ballerina, tung tung tung sahur",
+    "Skibidi bum bum bum yes yes",
+    "My favourite Roblox game is grow a garden",
+    "Bonjour mon ami, tu es magnifique"
 ];
 
 // Function to choose random quote
@@ -41,12 +45,13 @@ function openPopup() {
     typingText.textContent = "Finish typing: " + quote;
     
     feedbackElement.innerText = "Start typing...";
-    feedbackElement.style.color = "black";
+    feedbackElement.style.color = "green";
 
     // Typing check
     input.addEventListener("input", () => {
         // Start timer on first keystroke
         if (!isTestRunning && input.value.length > 0) {
+            //popupHeader.innerText = "Try again"
             startTime = new Date();
             isTestRunning = true; // Starts WPM test
         }
@@ -68,7 +73,7 @@ function openPopup() {
             if (isTestRunning) {
                 const elapsed = new Date() - startTime;
                 const wpm = calculateWPM(input.value, elapsed);
-                wpmElement.style.color = "blue";
+                wpmElement.style.color = "cyan";
                 wpmElement.innerText = `WPM: ${wpm}`;
             } else {
                 
@@ -79,12 +84,21 @@ function openPopup() {
     wpmElement.innerText = "";
 }
 
-
 // Initiates the countdown
 let countdownTimer;
 
 let startTime = null;
 let isTestRunning = false; // Variable for storing of the WPM test is running
+
+selectorElement.addEventListener("change", (event) => {
+    const selectedValue = event.target.value;
+    console.log(selectedValue)
+    videoSource.setAttribute("src", selectedValue)
+    video.load()
+    
+});
+
+//selectorElement.
 
 // 1. Listen for video play
 videoElement.addEventListener("play", () => {
@@ -95,7 +109,7 @@ videoElement.addEventListener("play", () => {
 
     // Opens the popup after 5 seconds
     openPopup();
-    }, 5000);
+    }, 10000);
 });
 
 // 
@@ -108,3 +122,11 @@ closeBtn.onclick = function() {
 modal.style.display = "none";
 }
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+    //modal.style.display = "none";
+    popupHeader.innerText = "HAHA NICE TRY"
+    //modalElement.classList.add("denyAnimation")
+}
+}
